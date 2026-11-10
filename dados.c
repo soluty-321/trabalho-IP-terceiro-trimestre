@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include "dados.h"
+#include "utils.h"
 
 #define LINHA_MAX 512
 
@@ -100,7 +101,7 @@ Carta *carregar_cartas_txt(char *nome_arquivo, int *qtd_cartas) {
     return cartas;
 }
 
-int listar_temas(Carta *cartas, int tamanho, char retorno_temas[6][50]) {
+int contar_temas(Carta *cartas, int tamanho, char retorno_temas[6][50]) {
     int quant_temas = 0;
     int repetido;
 
@@ -117,11 +118,20 @@ int listar_temas(Carta *cartas, int tamanho, char retorno_temas[6][50]) {
         }
     }
 
-    for (int i = 0; i < quant_temas; i++) {
-        printf("%d - %s\n", i, retorno_temas[i]);
+    return quant_temas;
+}
+
+void escolher_tema(char temas[6][50], int qtd_temas, char tema_escolhido[50]) {
+    int opcao;
+
+    printf("\nEscolha um tema:\n");
+    for (int i = 0; i < qtd_temas; i++) {
+        printf("[%d] %s\n", i + 1, temas[i]);
     }
 
-    return quant_temas;
+    printf("Opcao: ");
+    opcao = validar_entrada_numerica(qtd_temas, 1);
+    strcpy(tema_escolhido, temas[opcao - 1]);
 }
 
 Carta *filtrar_cartas_por_tema(Carta *cartas, char tema[], int tamanho, int *quant_filtradas) {

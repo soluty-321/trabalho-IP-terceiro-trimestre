@@ -3,10 +3,10 @@
 
 #include "carta.h"
 
-
 int contar_linhas_txt(char *nome_arquivo);
 Carta *carregar_cartas_txt(char *nome_arquivo, int *qtd_cartas);
-int listar_temas(Carta *cartas, int tamanho, char retorno_temas[6][50]);
+int contar_temas(Carta *cartas, int tamanho, char retorno_temas[6][50]);
+void escolher_tema(char temas[6][50], int qtd_temas, char tema_escolhido[50]);
 Carta *filtrar_cartas_por_tema(Carta *cartas, char tema[], int tamanho, int *qtd_filtradas);
 
 #endif
