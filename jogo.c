@@ -117,3 +117,40 @@ int comparar_cartas(Carta *c1, Carta *c2, int atributo) {
 
     return 0;
 }
+
+int simular_rodada(Monte *m1, Monte *m2) {
+    Carta c1;
+    Carta c2;
+    int atributo;
+    int vencedor;
+
+    if (m1 == NULL || m2 == NULL) {
+        return -1;
+    }
+
+    if (m1->tam <= 0 || m2->tam <= 0) {
+        return -1;
+    }
+
+    c1 = m1->monte[0];
+    c2 = m2->monte[0];
+
+    atributo = escolher_atributo(m1, c1.tema);
+    vencedor = comparar_cartas(&c1, &c2, atributo);
+
+    desenfileirar(m1, &c1);
+    desenfileirar(m2, &c2);
+
+    if (vencedor == 1) {
+        enfileirar(m1, c1);
+        enfileirar(m1, c2);
+    } else if (vencedor == 2) {
+        enfileirar(m2, c1);
+        enfileirar(m2, c2);
+    } else {
+        enfileirar(m1, c1);
+        enfileirar(m2, c2);
+    }
+
+    return vencedor;
+}

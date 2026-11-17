@@ -6,4 +6,8 @@ teste_completo
 *.pdf
 teste_dados.c
 teste_monte.c
-teste_completo.c
+teste_*
+
+.idea/
+cmake-build-debug/
+CMakeLists.txt

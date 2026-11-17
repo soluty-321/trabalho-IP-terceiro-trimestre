@@ -42,10 +42,6 @@ Ranking *carregar_ranking(char *nome_arquivo, int *qtd_jogadores) {
     long tamanho;
     int total;
 
-    if (qtd_jogadores == NULL) {
-        return NULL;
-    }
-
     arq = fopen(nome_arquivo, "rb");
     if (arq == NULL) {
         return criar_ranking_zerado(nome_arquivo, qtd_jogadores);
@@ -84,43 +80,22 @@ Ranking *carregar_ranking(char *nome_arquivo, int *qtd_jogadores) {
 Ranking *atualizar_ranking(Ranking *ranking, char *nome, int resultado, int *qtd_jogadores) {
     Ranking *novo;
     int indice = -1;
-    int vazio = -1;
-
-    if (nome == NULL || qtd_jogadores == NULL) {
-        return NULL;
-    }
-
-    if (nome[0] == '\0' || resultado < VITORIA || resultado > EMPATE) {
-        return NULL;
-    }
-
-    if (ranking == NULL && *qtd_jogadores > 0) {
-        return NULL;
-    }
 
     for (int i = 0; i < *qtd_jogadores; i++) {
-        if (ranking[i].nome[0] == '\0') {
-            if (vazio == -1) {
-                vazio = i;
-            }
-        } else if (strcmp(ranking[i].nome, nome) == 0) {
+        if (strcmp(ranking[i].nome, nome) == 0) {
             indice = i;
+            break;
         }
     }
 
     if (indice == -1) {
-        if (vazio != -1) {
-            indice = vazio;
-        } else {
-            novo = realloc(ranking, (*qtd_jogadores + 1) * sizeof(Ranking));
-            if (novo == NULL) {
-                return NULL;
-            }
-
-            ranking = novo;
-            indice = *qtd_jogadores;
-            (*qtd_jogadores)++;
+        novo = realloc(ranking, (*qtd_jogadores + 1) * sizeof(Ranking));
+        if (novo == NULL) {
+            return NULL;
         }
+        ranking = novo;
+        indice = *qtd_jogadores;
+        (*qtd_jogadores)++;
 
         memset(&ranking[indice], 0, sizeof(Ranking));
         strncpy(ranking[indice].nome, nome, TAM_NOME - 1);
@@ -138,25 +113,20 @@ Ranking *atualizar_ranking(Ranking *ranking, char *nome, int resultado, int *qtd
     return ranking;
 }
 
-int salvar_ranking(char *nome_arquivo, Ranking *ranking, int qtd_jogadores) {
+
+void salvar_ranking(char *nome_arquivo, Ranking *ranking, int qtd_jogadores) {
     FILE *arq;
     int escritos;
 
-    if (ranking == NULL || qtd_jogadores <= 0) {
-        return 1;
-    }
-
     arq = fopen(nome_arquivo, "wb");
     if (arq == NULL) {
-        return 1;
+        return;
     }
 
     escritos = fwrite(ranking, sizeof(Ranking), qtd_jogadores, arq);
     fclose(arq);
 
     if (escritos != qtd_jogadores) {
-        return 1;
+        return;
     }
-
-    return 0;
 }
