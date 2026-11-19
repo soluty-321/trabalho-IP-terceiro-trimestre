@@ -1,7 +1,3 @@
-teste_dados
-teste_monte
-teste_completo
-
 *.o
 *.pdf
 teste_*
@@ -10,3 +6,4 @@ super_trunfo
 
 .idea/
 cmake-build-debug/
+build/

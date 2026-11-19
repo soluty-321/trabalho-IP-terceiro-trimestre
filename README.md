@@ -117,6 +117,7 @@ Terminar a partida com mais cartas que o adversário. Se um jogador ficar sem ca
 6. O vencedor da rodada escolhe o atributo na rodada seguinte.
 7. Em caso de empate, a escolha passa para o outro jogador.
 8. Na primeira rodada, o jogador 1 escolhe.
+9. Foi usado empate simples, sem implementação de `Pote`
 
 ### Cartas especiais
 
