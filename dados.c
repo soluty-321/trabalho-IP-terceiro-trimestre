@@ -17,7 +17,7 @@ int contar_linhas_txt(char *nome_arquivo) {
     }
 
     while (fgets(linha, LINHA_MAX, arq) != NULL) {
-        if (linha[0] != '\n' && linha[0] != '\r' && linha[0] != '\0') {
+        if (linha[0] != '\n' && linha[0] != '\0') {
             linhas++;
         }
     }
@@ -58,38 +58,38 @@ Carta *carregar_cartas_txt(char *nome_arquivo, int *qtd_cartas) {
     }
 
     while (fgets(linha, LINHA_MAX, arq) != NULL && indice < total) {
-        if (linha[0] == '\n' || linha[0] == '\r' || linha[0] == '\0') {
+        if (linha[0] == '\n' || linha[0] == '\0') {
             continue;
         }
 
-        token = strtok(linha, ";\r\n");
+        token = strtok(linha, ";\n");
         cartas[indice].id = atoi(token);
 
-        token = strtok(NULL, ";\r\n");
+        token = strtok(NULL, ";\n");
         strcpy(cartas[indice].tema, token);
 
-        token = strtok(NULL, ";\r\n");
+        token = strtok(NULL, ";\n");
         strcpy(cartas[indice].nome, token);
 
-        token = strtok(NULL, ";\r\n");
+        token = strtok(NULL, ";\n");
         strcpy(cartas[indice].grupo, token);
 
-        token = strtok(NULL, ";\r\n");
+        token = strtok(NULL, ";\n");
         strcpy(cartas[indice].categoria, token);
 
-        token = strtok(NULL, ";\r\n");
+        token = strtok(NULL, ";\n");
         cartas[indice].atri1 = atoi(token);
 
-        token = strtok(NULL, ";\r\n");
+        token = strtok(NULL, ";\n");
         cartas[indice].atri2 = atoi(token);
 
-        token = strtok(NULL, ";\r\n");
+        token = strtok(NULL, ";\n");
         cartas[indice].atri3 = atoi(token);
 
-        token = strtok(NULL, ";\r\n");
+        token = strtok(NULL, ";\n");
         cartas[indice].atri4 = atoi(token);
 
-        token = strtok(NULL, ";\r\n");
+        token = strtok(NULL, ";\n");
         cartas[indice].especial = atoi(token);
 
         indice++;

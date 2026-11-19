@@ -4,9 +4,9 @@ teste_completo
 
 *.o
 *.pdf
-teste_dados.c
-teste_monte.c
 teste_*
+*.dat
+super_trunfo
 
 .idea/
 cmake-build-debug/

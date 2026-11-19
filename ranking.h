@@ -17,6 +17,8 @@ typedef struct {
 
 Ranking *carregar_ranking(char *nome_arquivo, int *qtd_jogadores);
 Ranking *atualizar_ranking(Ranking *ranking, char *nome, int resultado, int *qtd_jogadores);
+void ordenar_ranking(Ranking *ranking, int qtd_jogadores);
+void exibir_ranking(Ranking *ranking, int qtd_jogadores);
 void salvar_ranking(char *nome_arquivo, Ranking *ranking, int qtd_jogadores);
 
 #endif
