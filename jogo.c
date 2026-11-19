@@ -6,7 +6,7 @@
 #include "ranking.h"
 #include "utils.h"
 
-#define ARQUIVO_CARTAS "teste_cartas.txt"
+#define ARQUIVO_CARTAS "cartas.txt"
 #define MIN_CARTAS_PARTIDA 10
 
 Carta *embaralhar(Carta *filtradas, int quant) {
@@ -167,6 +167,7 @@ int jogar_partida_completa(Monte *jogador1, Monte *jogador2, char *nome1, char *
             jogador_escolhe = 2;
         } else {
             printf("\n>> A rodada terminou empatada.\n");
+            jogador_escolhe = 3 - jogador_escolhe;
         }
 
         aperte_enter();

@@ -1,7 +1,7 @@
 #ifndef RANKING_H
 #define RANKING_H
 
-#define ARQUIVO_RANKING "ranking.dat"
+#define ARQUIVO_RANKING "ranking.bin"
 #define TAM_NOME 50
 
 #define VITORIA 1

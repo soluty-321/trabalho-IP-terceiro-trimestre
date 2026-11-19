@@ -5,9 +5,8 @@ teste_completo
 *.o
 *.pdf
 teste_*
-*.dat
+ranking.*
 super_trunfo
 
 .idea/
 cmake-build-debug/
-CMakeLists.txt

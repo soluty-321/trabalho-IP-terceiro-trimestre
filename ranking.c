@@ -104,7 +104,6 @@ Ranking *atualizar_ranking(Ranking *ranking, char *nome, int resultado, int *qtd
 
     if (indice == -1 && vazio != -1) {
         indice = vazio;
-        memset(&ranking[indice], 0, sizeof(Ranking));
         strncpy(ranking[indice].nome, nome, TAM_NOME - 1);
         ranking[indice].nome[TAM_NOME - 1] = '\0';
     }
